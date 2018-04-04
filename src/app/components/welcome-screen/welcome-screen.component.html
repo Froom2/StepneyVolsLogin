@@ -1,0 +1,20 @@
+
+
+<div *ngIf="formHidden">
+If you are new, please go to reception!
+<button type="button" (click)="showForm()">I've been here before, I want to sign in!</button>
+<br>
+</div>
+
+<!--google the star and the round/square brackets in angular-->
+<div *ngIf="!formHidden">
+  <label for="day">day</label>
+  <input type="number" id="day">
+  <br>
+  <label for="month">month</label>
+  <input type="number" id="month">
+</div>
+
+<div *ngFor="let month of months">
+  <button>{{month}}</button>
+</div>
