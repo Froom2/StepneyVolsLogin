@@ -1,20 +1,34 @@
 
 
-<div *ngIf="formHidden">
+<div *ngIf="welcomeShown">
 If you are new, please go to reception!
-<button type="button" (click)="showForm()">I've been here before, I want to sign in!</button>
+<button type="button" (click)="showMonths()">I've been here before, I want to sign in!</button>
 <br>
 </div>
 
 <!--google the star and the round/square brackets in angular-->
-<div *ngIf="!formHidden">
-  <label for="day">day</label>
-  <input type="number" id="day">
-  <br>
-  <label for="month">month</label>
-  <input type="number" id="month">
+<!--<div *ngIf="monthsShown">-->
+  <!--<label for="day">day</label>-->
+  <!--<input type="number" id="day">-->
+  <!--<br>-->
+  <!--<label for="monthBorn">monthBorn</label>-->
+  <!--<input type="number" id="monthBorn">-->
+<!--</div>-->
+
+<div *ngIf="monthsShown">
+  What month were you born in?
+  <div *ngFor="let month of months">
+    <button (click)="selectMonth($event)">{{month}}</button>
+  </div>
 </div>
 
-<div *ngFor="let month of months">
-  <button>{{month}}</button>
+<div *ngIf="daysShown">
+  What day were you born on?
+  <div *ngFor="let day of daysInMonth(monthInfo[monthBorn])">
+    <button (click)="selectDay($event)">{{day}}</button>
+  </div>
+</div>
+
+<div *ngIf="thankyouShown">
+  Thank you for signing in!
 </div>
