@@ -1,6 +1,6 @@
 
 
-<div *ngIf="welcomeShown">
+<div *ngIf="currentFormElement === FormElements.Welcome">
 If you are new, please go to reception!
 <button type="button" (click)="showMonths()">I've been here before, I want to sign in!</button>
 <br>
@@ -15,20 +15,20 @@ If you are new, please go to reception!
   <!--<input type="number" id="monthBorn">-->
 <!--</div>-->
 
-<div *ngIf="monthsShown">
+<div *ngIf="currentFormElement === FormElements.Months">
   What month were you born in?
   <div *ngFor="let month of months">
     <button (click)="selectMonth($event)">{{month}}</button>
   </div>
 </div>
 
-<div *ngIf="daysShown">
+<div *ngIf="currentFormElement === FormElements.Days">
   What day were you born on?
   <div *ngFor="let day of daysInMonth(monthInfo[monthBorn])">
     <button (click)="selectDay($event)">{{day}}</button>
   </div>
 </div>
 
-<div *ngIf="thankyouShown">
+<div *ngIf="currentFormElement === FormElements.Thanks">
   Thank you for signing in!
 </div>

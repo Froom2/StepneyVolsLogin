@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
+import {FormElements, WelcomeScreenComponent} from './components/welcome-screen/welcome-screen.component';
 import {AppRoutingModule} from './app-routing.module';
 
 
