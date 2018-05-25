@@ -45,6 +45,12 @@ export class WelcomeScreenComponent implements OnInit {
   selectDay(receiver) {
     this.currentFormElement = FormElements.Thanks;
     this.dayBorn = receiver.target.innerText;
+    setTimeout( function(t) {
+      console.log('hello')
+      console.log(t.currentFormElement)
+      t.currentFormElement = FormElements.Welcome;
+      console.log(t.currentFormElement)
+    }, 2000, this);
   }
 
   ngOnInit() {
