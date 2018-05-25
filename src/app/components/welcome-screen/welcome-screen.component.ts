@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeScreenComponent implements OnInit {
 
+  FormElements = FormElements;
+  currentFormElement = FormElements.Welcome;
+
   monthInfo = {
     'January': 31,
     'February': 29,
@@ -23,44 +26,41 @@ export class WelcomeScreenComponent implements OnInit {
   };
 
   months = Object.keys(this.monthInfo);
-
-  welcomeShown = true;
-  monthsShown = false;
-  daysShown = false;
-  thankyouShown = false;
   monthBorn = '';
   dayBorn = 0;
 
   showMonths() {
-    this.welcomeShown = false;
-    this.monthsShown = true;
-    this.daysShown = false;
+    this.currentFormElement = FormElements.Months;
   }
 
   selectMonth(receiver) {
-    this.daysInMonth(this.monthInfo[receiver.target.innerText]);
-    this.welcomeShown = false;
-    this.monthsShown = false;
-    this.daysShown = true;
+    this.currentFormElement = FormElements.Days;
     this.monthBorn = receiver.target.innerText;
   }
 
   daysInMonth(days) {
-    const listOfDaysInMonth = Array.from(Array(days).keys()).map( function(value) {
-      return value + 1;
-    } );
-    return listOfDaysInMonth;
+    return Array.from(Array(days).keys()).map(x => x + 1);
   }
 
   selectDay(receiver) {
-    this.welcomeShown = false;
-    this.monthsShown = false;
-    this.daysShown = false;
-    this.thankyouShown = true;
+    this.currentFormElement = FormElements.Thanks;
     this.dayBorn = receiver.target.innerText;
+    setTimeout( function(t) {
+      console.log('hello')
+      console.log(t.currentFormElement)
+      t.currentFormElement = FormElements.Welcome;
+      console.log(t.currentFormElement)
+    }, 2000, this);
   }
 
   ngOnInit() {
   }
 
+}
+
+export enum FormElements {
+  Months,
+  Days,
+  Thanks,
+  Welcome
 }
