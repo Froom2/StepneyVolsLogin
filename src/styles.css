@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+
+html {
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+}
+
+div {
+    color: #e95d0f;
+    align-content: center;
+}
