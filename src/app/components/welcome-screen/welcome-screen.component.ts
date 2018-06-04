@@ -28,6 +28,7 @@ export class WelcomeScreenComponent implements OnInit {
   months = Object.keys(this.monthInfo);
   monthBorn = '';
   dayBorn = 0;
+  visitReason = '';
 
   showMonths() {
     this.currentFormElement = FormElements.Months;
@@ -43,13 +44,15 @@ export class WelcomeScreenComponent implements OnInit {
   }
 
   selectDay(receiver) {
-    this.currentFormElement = FormElements.Thanks;
+    this.currentFormElement = FormElements.VisitReason;
     this.dayBorn = receiver.target.innerText;
+  }
+
+  selectVisitReason(receiver) {
+    this.currentFormElement = FormElements.Thanks;
+    this.visitReason = receiver.target.innerText;
     setTimeout( function(t) {
-      console.log('hello')
-      console.log(t.currentFormElement)
       t.currentFormElement = FormElements.Welcome;
-      console.log(t.currentFormElement)
     }, 2000, this);
   }
 
@@ -61,6 +64,7 @@ export class WelcomeScreenComponent implements OnInit {
 export enum FormElements {
   Months,
   Days,
+  VisitReason,
   Thanks,
   Welcome
 }

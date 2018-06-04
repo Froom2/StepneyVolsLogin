@@ -1,0 +1,114 @@
+
+
+.months {
+    padding: 5px;
+}
+
+.clickme {
+    background: #709e1b;
+    position: relative;
+    vertical-align: top;
+    padding: 2;
+    text-align: center;
+    color: #fff;
+    font-size: 4px;
+    border: 0;
+    width: 30%;
+    height: 100px;
+    font-size: 20px;
+    
+}
+
+.clickme:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.main-container {
+    height: 100vh;
+}
+
+.header-row {
+    position: relative;
+    height: 25vh;
+    background-color: rgb(233,93,15);
+}
+
+.bottomright {
+    position: absolute;
+    padding: 0;
+    bottom: -8px;
+    right: 16px;
+}
+
+.main-page {
+    height: 75vh;
+}
+
+.content {
+    width: 80%;
+    margin: 0 10%;
+}
+
+.head-content {
+    width: 80%;
+    margin: 0 10%;
+    padding-top: 6vh;
+}
+
+h1 {
+    margin-top: 7vh;
+    margin-bottom: 3vh;
+    color: rgb(153,37,5);
+    font-size: 50px;
+    font-weight: bold;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 3vh;
+    color: rgb(153,37,5);
+    font-size: 40px;
+    font-weight: bold;
+}
+
+p {
+    margin-right: 10vw;
+    margin-top: 0;
+    color: rgb(233,93,15);
+    font-size: 28px;
+}
+
+button {
+    margin-top: 7vh;
+    color: white;
+    font-size: 1.75em;
+    align-content: center;
+    background-color: rgb(137, 190, 39);
+}
+
+.btn-main {
+    height: 10vh;
+    width: 50vw;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-month {
+    margin-top: 0;
+    height: 10vh;
+    width: 20vw;
+}
+
+.btn-day {
+    margin: 5px;
+    height: 80px;
+    width: 80px;
+}
