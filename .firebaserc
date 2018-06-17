@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "stepneylogin"
+    "default": "stepneylogin",
+    "production": "stepneylogin"
   }
 }

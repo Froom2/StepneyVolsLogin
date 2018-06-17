@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="header-row">
         <div class="head-content">
-            <img src="assets/logoWhite.png" alt="logo" height="200px">
+            <img src="assets/logoWhite.png" alt="logo" height="80px">
         </div>
         <div class="bottomright">
             <img src="assets/horse-white-left.png" alt="whitehorse" height="80px" width="auto">
@@ -46,8 +46,8 @@
             <div *ngIf="currentFormElement === FormElements.VisitReason">
                 <h1>Why are you visiting today?</h1>
                 <div style="text-align: center;">
-                    <button (click)="selectVisitReason($event)" class="btn btn-main">
-                        Volunteering
+                    <button *ngFor="let item of visitInfo" (click)="selectVisitReason($event)" class="btn btn-main">
+                        {{item}}
                     </button>
                 </div>
             </div>

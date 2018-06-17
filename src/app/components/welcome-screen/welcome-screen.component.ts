@@ -25,6 +25,12 @@ export class WelcomeScreenComponent implements OnInit {
     'December': 31
   };
 
+  visitInfo = [
+    'Volunteering',
+    'Riding',
+    'Just visiting'
+  ]
+
   months = Object.keys(this.monthInfo);
   monthBorn = '';
   dayBorn = 0;
