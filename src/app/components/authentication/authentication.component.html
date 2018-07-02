@@ -1,3 +1,10 @@
-<p>
-  authentication works!
-</p>
+<div class="container">
+  <h1>Admin Sign In</h1>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+	
+    <input type="text" placeholder="Email" formControlName="email">
+    <input type="password" placeholder="Password" formControlName="password">
+    <button type="submit">Clicky!</button>
+  
+  </form>
+</div>
