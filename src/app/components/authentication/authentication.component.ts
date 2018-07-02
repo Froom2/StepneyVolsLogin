@@ -21,8 +21,6 @@ export class AuthenticationComponent {
   }
   
   login() {
-    console.log(this.loginForm.value.email);
-    console.log(this.loginForm.value.password);
     this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
       .then(data => {
         console.log(data)
