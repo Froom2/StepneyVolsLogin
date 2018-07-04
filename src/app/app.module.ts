@@ -1,22 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
-import {FormElements, WelcomeScreenComponent} from './components/welcome-screen/welcome-screen.component';
-import {AppRoutingModule} from './app-routing.module';
-
+import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeScreenComponent
+    WelcomeScreenComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
