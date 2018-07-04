@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-welcome-screen',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome-screen.component.css']
 })
 export class WelcomeScreenComponent implements OnInit {
+
+  constructor(private dataService: DatabaseService) {
+
+  }
 
   FormElements = FormElements;
   currentFormElement = FormElements.Welcome;
@@ -57,6 +62,18 @@ export class WelcomeScreenComponent implements OnInit {
   selectVisitReason(receiver) {
     this.currentFormElement = FormElements.Thanks;
     this.visitReason = receiver.target.innerText;
+
+    this.dataService.writeUserData(
+      "testid",
+        "testFirstName",
+        "testLastName",
+        "testDateOfBirth",
+        "volunteerType",
+        new Date(),
+        "log in",
+        "just visiting"
+    )
+
     setTimeout( function(t) {
       t.currentFormElement = FormElements.Welcome;
     }, 2000, this);
