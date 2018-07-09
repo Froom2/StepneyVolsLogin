@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuardService } from './auth-guard.service';
+import { DatabaseService } from './services/database.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { AuthGuardService } from './auth-guard.service';
     ReactiveFormsModule,
     AngularFireAuthModule
   ],
-  providers: [AuthenticationService, AuthGuardService],
+  providers: [AuthenticationService, AuthGuardService, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
