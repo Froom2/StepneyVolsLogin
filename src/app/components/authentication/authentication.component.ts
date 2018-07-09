@@ -23,12 +23,12 @@ export class AuthenticationComponent {
   login() {
     this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
       .then(data => {
-        console.log(data)
         this.router.navigate(['/login']);
       })
       .catch(error => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("Log in failed error: " + errorCode + " - " + errorMessage)
       });
 	}
 

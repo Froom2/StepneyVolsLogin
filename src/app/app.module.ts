@@ -9,7 +9,7 @@ import { WelcomeScreenComponent } from './components/welcome-screen/welcome-scre
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { AuthenticationService } from './services/authentication.service';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
