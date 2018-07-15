@@ -1,22 +1,34 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class DatabaseService {
+  usersRef: AngularFireList<any>;
+  visitsRef: AngularFireList<any>;
 
-  constructor() { }
+  constructor(public afDB: AngularFireDatabase) { 
+    this.usersRef = afDB.list('users');
+    this.visitsRef = afDB.list('visits');
+  }
 
-  writeUserData(userId, firstName, lastName, dateOfBirth, volunteerType, dateTime, event, purpose) {
-    firebase.database().ref('visits').push({
+  getUsersWithMonth(month, day) {
+    console.log("getUsersWithMonth " + month + day)
+    return this.usersRef.query
+      .orderByChild('dayAndMonthOfBirth')
+      .equalTo(month + day)
+  }
+
+
+  writeUserData(userId, firstName, lastName, dayAndMonthOfBirth, volunteerType) {
+    const visit = {
       userId: userId,
       firstName: firstName,
       lastName: lastName,
-      dateOfBirth: dateOfBirth,
-      volunteerType: volunteerType,
-      dateTime: dateTime,
-      event: event,
-      purpose: purpose
-    });
+      dayAndMonthOfBirth: dayAndMonthOfBirth,
+      volunteerType: volunteerType
+    }
+    
+    this.visitsRef.push(visit);
   }
 
 }

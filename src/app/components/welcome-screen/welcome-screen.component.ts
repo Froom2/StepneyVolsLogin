@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../services/database.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-welcome-screen',
@@ -7,6 +8,7 @@ import { DatabaseService } from '../../services/database.service';
   styleUrls: ['./welcome-screen.component.css']
 })
 export class WelcomeScreenComponent implements OnInit {
+  userThing: User[];
 
   constructor(private dataService: DatabaseService) {
 
@@ -63,16 +65,24 @@ export class WelcomeScreenComponent implements OnInit {
     this.currentFormElement = FormElements.Thanks;
     this.visitReason = receiver.target.innerText;
 
-    this.dataService.writeUserData(
-      "testid",
-        "testFirstName",
-        "testLastName",
-        "testDateOfBirth",
-        "volunteerType",
-        new Date(),
-        "log in",
-        "just visiting"
-    )
+    // this.dataService.writeUserData(
+    //   "testid",
+    //     "testFirstName",
+    //     "testLastName",
+    //     this.monthBorn + this.dayBorn,
+    //     "volunteerType"
+    // )
+
+    console.log("got this far with.... " + this.monthBorn + this.dayBorn)
+    this.dataService.getUsersWithMonth(this.monthBorn, this.dayBorn)
+      .on("value",
+        snapshot => {
+          console.log(snapshot.val());
+          this.userThing = snapshot.val();
+          this.userThing.forEach(x => console.log(x.firstName));
+        },
+        errorObject =>  console.log("The read failed: " + errorObject.code)
+      );
 
     setTimeout( function(t) {
       t.currentFormElement = FormElements.Welcome;

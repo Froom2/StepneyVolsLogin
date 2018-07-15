@@ -11,6 +11,7 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuardService } from './auth-guard.service';
 import { DatabaseService } from './services/database.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,12 @@ import { DatabaseService } from './services/database.service';
     ReactiveFormsModule,
     AngularFireAuthModule
   ],
-  providers: [AuthenticationService, AuthGuardService, DatabaseService],
+  providers: [
+    AuthenticationService,
+    AuthGuardService,
+    DatabaseService,
+    AngularFireDatabase
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
