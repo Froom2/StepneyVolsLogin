@@ -1,0 +1,6 @@
+<h1>Why are you visiting today?</h1>
+<div style="text-align: center;">
+  <button *ngFor="let item of getVisitReasons()" (click)="setVisitReason($event)" class="btn btn-main">
+    {{item}}
+  </button>
+</div>

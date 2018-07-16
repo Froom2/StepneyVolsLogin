@@ -28,6 +28,7 @@ export class DatabaseService {
   }
 
   getUser(month, day) {
+    console.log(month + day);
     this.usersRef = this.afDB.list('users', ref => ref
       .orderByChild('dayAndMonthOfBirth')
       .equalTo(month + day));

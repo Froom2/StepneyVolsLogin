@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  border: 0;
+  color: white;
+  font-size: 28px;
+  align-content: center;
+  background-color: rgb(137, 190, 39);
+}
+
+.button:active {
+  top: 1px;
+  background-color: #216c14;
+}
+
+.btn-main {
+  height: 80px;
+  width: 50vw;
+  margin: 5px;
+}
+
+.btn-day {
+  margin: 5px;
+  height: 80px;
+  width: 80px;
+}

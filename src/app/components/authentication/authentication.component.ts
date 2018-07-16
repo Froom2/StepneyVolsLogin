@@ -12,7 +12,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class AuthenticationComponent {
   loginForm: FormGroup
-	
+
   constructor(formBuilder: FormBuilder,
     public authenticationService: AuthenticationService,
     public router: Router,
@@ -28,7 +28,7 @@ export class AuthenticationComponent {
     this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(data => {
         console.log(`sign in data : ${data}`)
-        this.router.navigate(['/login']);
+        this.router.navigate(['/welcome']);
       })
       .catch(error => {
         console.error(error);
