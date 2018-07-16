@@ -67,56 +67,78 @@ export class WelcomeScreenComponent implements OnInit {
     this.currentFormElement = FormElements.Thanks;
     this.visitReason = receiver.target.innerText;
 
-    this.dataService.getUsersWithMonth(this.monthBorn, this.dayBorn)
-      .on("value",
-        snapshot => {
-          // console.log(snapshot);
+    this.dataService.getUser(this.monthBorn, this.dayBorn)
+      .snapshotChanges()
+      .subscribe(data => {
+        this.userList = [];
+        data.forEach(element => {
+          this.userList.push({
+            $key: element.key,
+            ...element.payload.val()
+          });
+        });
 
-          // // This is roughly how to get the key for each user in the list
-          // // we access the snaphot directly because .val() strips the key
-          // snapshot.forEach(snapshot => {
-          //   console.log(snapshot.val());
-          //   console.log(snapshot.key);
-          //   return true;
-          // });
+        const newVisit = {
+          dateTime: new Date(),
+          eventType: 'super event',
+          purpose: this.visitReason
+        };
 
-          this.userList = snapshot.val();
-          this.currentUser = snapshot.val()[0];
+        this.currentUser = this.userList[0];
+        this.currentUser.visits.push(newVisit);
 
-          console.log(new Date().toUTCString)
-
-          const newVisit = <Visit>{
-            dateTime: new Date(),
-            eventType: 'arrival',
-            purpose: this.visitReason
-          }
-
-          if (this.currentUser.visits == null) {
-            this.currentUser.visits = [newVisit]
-          } else {
-            this.currentUser.visits.push(newVisit)
-          }
-          // Just testing update (add visit) here
-          // this.currentUser.lastName = 'borris';
-          
-
-          // this.currentUser.visits.push(newVisit)
-          // this.currentUser.visits = this.currentUser.visits.push(newVisit)
-          
-          this.addVisit(this.currentUser, 0);
-        },
-        errorObject =>  console.log("The read failed: " + errorObject.code)
-      );
+        this.addVisit(this.currentUser);
+      });
+      // .on("value",
+      //   snapshot => {
+      //     // console.log(snapshot);
+      //
+      //     // // This is roughly how to get the key for each user in the list
+      //     // // we access the snaphot directly because .val() strips the key
+      //     // snapshot.forEach(snapshot => {
+      //     //   console.log(snapshot.val());
+      //     //   console.log(snapshot.key);
+      //     //   return true;
+      //     // });
+      //
+      //     console.log(snapshot.val());
+      //     this.userList = snapshot.val();
+      //     this.currentUser = snapshot.val()[0];
+      //
+      //     console.log(new Date().toUTCString)
+      //
+      //     const newVisit = <Visit>{
+      //       dateTime: new Date(),
+      //       eventType: 'arrival',
+      //       purpose: this.visitReason
+      //     }
+      //
+      //     // if (this.currentUser.visits == null) {
+      //     //   this.currentUser.visits = [newVisit]
+      //     // } else {
+      //     //   this.currentUser.visits.push(newVisit)
+      //     // }
+      //     // Just testing update (add visit) here
+      //     // this.currentUser.lastName = 'borris';
+      //
+      //
+      //     // this.currentUser.visits.push(newVisit)
+      //     // this.currentUser.visits = this.currentUser.visits.push(newVisit)
+      //
+      //     // this.addVisit(this.currentUser, 0);
+      //   },
+      //   errorObject =>  console.log("The read failed: " + errorObject.code)
+      // );
 
     setTimeout( function(t) {
       t.currentFormElement = FormElements.Welcome;
     }, 2000, this);
   }
 
-  addVisit(user: User, id) {
-    this.dataService.updateUser(user, id)
+  addVisit(user: User) {
+    this.dataService.updateUser(user)
       .then(_ => console.log('update success'))
-      .catch(err => console.error(err))
+      .catch(err => console.error(err));
   }
 
   ngOnInit() {
