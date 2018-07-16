@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../services/database.service';
-import { User } from '../../models/user';
+import { User, Visit } from '../../models/user';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-welcome-screen',
@@ -8,7 +9,8 @@ import { User } from '../../models/user';
   styleUrls: ['./welcome-screen.component.css']
 })
 export class WelcomeScreenComponent implements OnInit {
-  userThing: User[];
+  userList: User[];
+  currentUser: User;
 
   constructor(private dataService: DatabaseService) {
 
@@ -65,21 +67,43 @@ export class WelcomeScreenComponent implements OnInit {
     this.currentFormElement = FormElements.Thanks;
     this.visitReason = receiver.target.innerText;
 
-    // this.dataService.writeUserData(
-    //   "testid",
-    //     "testFirstName",
-    //     "testLastName",
-    //     this.monthBorn + this.dayBorn,
-    //     "volunteerType"
-    // )
-
-    console.log("got this far with.... " + this.monthBorn + this.dayBorn)
     this.dataService.getUsersWithMonth(this.monthBorn, this.dayBorn)
       .on("value",
         snapshot => {
-          console.log(snapshot.val());
-          this.userThing = snapshot.val();
-          this.userThing.forEach(x => console.log(x.firstName));
+          // console.log(snapshot);
+
+          // // This is roughly how to get the key for each user in the list
+          // // we access the snaphot directly because .val() strips the key
+          // snapshot.forEach(snapshot => {
+          //   console.log(snapshot.val());
+          //   console.log(snapshot.key);
+          //   return true;
+          // });
+
+          this.userList = snapshot.val();
+          this.currentUser = snapshot.val()[0];
+
+          console.log(new Date().toUTCString)
+
+          const newVisit = <Visit>{
+            dateTime: new Date(),
+            eventType: 'arrival',
+            purpose: this.visitReason
+          }
+
+          if (this.currentUser.visits == null) {
+            this.currentUser.visits = [newVisit]
+          } else {
+            this.currentUser.visits.push(newVisit)
+          }
+          // Just testing update (add visit) here
+          // this.currentUser.lastName = 'borris';
+          
+
+          // this.currentUser.visits.push(newVisit)
+          // this.currentUser.visits = this.currentUser.visits.push(newVisit)
+          
+          this.addVisit(this.currentUser, 0);
         },
         errorObject =>  console.log("The read failed: " + errorObject.code)
       );
@@ -87,6 +111,12 @@ export class WelcomeScreenComponent implements OnInit {
     setTimeout( function(t) {
       t.currentFormElement = FormElements.Welcome;
     }, 2000, this);
+  }
+
+  addVisit(user: User, id) {
+    this.dataService.updateUser(user, id)
+      .then(_ => console.log('update success'))
+      .catch(err => console.error(err))
   }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { Visit, User } from '../models/user';
 
 @Injectable()
 export class DatabaseService {
@@ -18,14 +19,17 @@ export class DatabaseService {
       .equalTo(month + day)
   }
 
+  updateUser(user: User, id) {
+    return this.afDB.object('/users/' + id)
+      .update(user);
+  } 
 
-  writeUserData(userId, firstName, lastName, dayAndMonthOfBirth, volunteerType) {
-    const visit = {
-      userId: userId,
-      firstName: firstName,
-      lastName: lastName,
-      dayAndMonthOfBirth: dayAndMonthOfBirth,
-      volunteerType: volunteerType
+
+  writeUserData(eventType, purpose) {
+    const visit: Visit = {
+      dateTime: new Date(),
+      eventType: eventType,
+      purpose: purpose
     }
     
     this.visitsRef.push(visit);

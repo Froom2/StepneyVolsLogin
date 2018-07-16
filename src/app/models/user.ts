@@ -1,9 +1,9 @@
 export class User {
       firstName: string;
       lastName: string;
-    //   dateOfBirth: Date;
+      dateOfBirth: Date;
       volunteerType: string;
-    //   visits: Visit[];
+      visits: Visit[];
       dayAndMonthOfBirth: string;
 }
 
