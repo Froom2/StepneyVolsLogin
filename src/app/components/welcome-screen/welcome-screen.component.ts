@@ -80,55 +80,19 @@ export class WelcomeScreenComponent implements OnInit {
 
         const newVisit = {
           dateTime: new Date(),
-          eventType: 'super event',
+          eventType: 'arrival',
           purpose: this.visitReason
         };
 
         this.currentUser = this.userList[0];
-        this.currentUser.visits.push(newVisit);
+        if (this.currentUser.visits == null) {
+          this.currentUser.visits = [newVisit]
+        } else {
+          this.currentUser.visits.push(newVisit)
+        }
 
         this.addVisit(this.currentUser);
       });
-      // .on("value",
-      //   snapshot => {
-      //     // console.log(snapshot);
-      //
-      //     // // This is roughly how to get the key for each user in the list
-      //     // // we access the snaphot directly because .val() strips the key
-      //     // snapshot.forEach(snapshot => {
-      //     //   console.log(snapshot.val());
-      //     //   console.log(snapshot.key);
-      //     //   return true;
-      //     // });
-      //
-      //     console.log(snapshot.val());
-      //     this.userList = snapshot.val();
-      //     this.currentUser = snapshot.val()[0];
-      //
-      //     console.log(new Date().toUTCString)
-      //
-      //     const newVisit = <Visit>{
-      //       dateTime: new Date(),
-      //       eventType: 'arrival',
-      //       purpose: this.visitReason
-      //     }
-      //
-      //     // if (this.currentUser.visits == null) {
-      //     //   this.currentUser.visits = [newVisit]
-      //     // } else {
-      //     //   this.currentUser.visits.push(newVisit)
-      //     // }
-      //     // Just testing update (add visit) here
-      //     // this.currentUser.lastName = 'borris';
-      //
-      //
-      //     // this.currentUser.visits.push(newVisit)
-      //     // this.currentUser.visits = this.currentUser.visits.push(newVisit)
-      //
-      //     // this.addVisit(this.currentUser, 0);
-      //   },
-      //   errorObject =>  console.log("The read failed: " + errorObject.code)
-      // );
 
     setTimeout( function(t) {
       t.currentFormElement = FormElements.Welcome;
