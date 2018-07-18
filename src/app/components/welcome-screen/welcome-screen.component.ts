@@ -68,13 +68,13 @@ export class WelcomeScreenComponent implements OnInit {
     this.visitReason = receiver.target.innerText;
 
     this.dataService.getUser(this.monthBorn, this.dayBorn)
-      .snapshotChanges()
-      .subscribe(data => {
+      .query.once('value').then(data => {
         this.userList = [];
         data.forEach(element => {
+          console.log(element);
           this.userList.push({
             $key: element.key,
-            ...element.payload.val()
+            ...element.val()
           });
         });
 
