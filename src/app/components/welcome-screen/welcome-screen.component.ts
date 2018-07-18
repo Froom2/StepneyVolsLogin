@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../../services/database.service';
+import { User, Visit } from '../../models/user';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-welcome-screen',
@@ -6,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome-screen.component.css']
 })
 export class WelcomeScreenComponent implements OnInit {
+  userList: User[];
+  currentUser: User;
+
+  constructor(private dataService: DatabaseService) {
+
+  }
 
   FormElements = FormElements;
   currentFormElement = FormElements.Welcome;
@@ -57,9 +66,43 @@ export class WelcomeScreenComponent implements OnInit {
   selectVisitReason(receiver) {
     this.currentFormElement = FormElements.Thanks;
     this.visitReason = receiver.target.innerText;
+
+    this.dataService.getUser(this.monthBorn, this.dayBorn)
+      .query.once('value').then(data => {
+        this.userList = [];
+        data.forEach(element => {
+          console.log(element);
+          this.userList.push({
+            $key: element.key,
+            ...element.val()
+          });
+        });
+
+        const newVisit = {
+          dateTime: new Date(),
+          eventType: 'arrival',
+          purpose: this.visitReason
+        };
+
+        this.currentUser = this.userList[0];
+        if (this.currentUser.visits == null) {
+          this.currentUser.visits = [newVisit]
+        } else {
+          this.currentUser.visits.push(newVisit)
+        }
+
+        this.addVisit(this.currentUser);
+      });
+
     setTimeout( function(t) {
       t.currentFormElement = FormElements.Welcome;
     }, 2000, this);
+  }
+
+  addVisit(user: User) {
+    this.dataService.updateUser(user)
+      .then(_ => console.log('update success'))
+      .catch(err => console.error(err));
   }
 
   ngOnInit() {

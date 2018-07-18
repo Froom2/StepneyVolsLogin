@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
@@ -12,24 +13,36 @@ import { Router } from '@angular/router';
 export class AuthenticationComponent {
   loginForm: FormGroup
 	
-	constructor(formBuilder: FormBuilder, public afAuth: AngularFireAuth, private router: Router) {
+  constructor(formBuilder: FormBuilder,
+    public authenticationService: AuthenticationService,
+    public router: Router,
+    public afAuth: AngularFireAuth) {
 
 		this.loginForm = formBuilder.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
 			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
 		});
   }
-  
+
   login() {
-    this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
+    this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(data => {
+        console.log(`sign in data : ${data}`)
         this.router.navigate(['/login']);
       })
       .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("Log in failed error: " + errorCode + " - " + errorMessage)
+        console.error(error);
       });
-	}
+  }
 
+  logout() {
+    this.authenticationService.logout()
+      .then(data => {
+        console.log(data);
+        this.router.navigate(['/']);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }
 }
