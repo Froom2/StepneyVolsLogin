@@ -3,9 +3,11 @@ import { RouterModule, Routes} from '@angular/router';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 const appRoutes: Routes = [
   { path: '', component: AuthenticationComponent},
+  { path: 'thankyou', component: ThankyouComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: WelcomeScreenComponent, canActivate: [AuthGuardService]}
 ];
 

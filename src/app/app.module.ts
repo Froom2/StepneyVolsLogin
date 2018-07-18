@@ -12,12 +12,14 @@ import { AuthenticationService } from './services/authentication.service';
 import { DatabaseService } from './services/database.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeScreenComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,

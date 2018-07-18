@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../services/database.service';
 import { User, Visit } from '../../models/user';
-import { map } from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome-screen',
@@ -12,7 +12,8 @@ export class WelcomeScreenComponent implements OnInit {
   userList: User[];
   currentUser: User;
 
-  constructor(private dataService: DatabaseService) {
+  constructor(private dataService: DatabaseService,
+    public router: Router) {
 
   }
 
@@ -64,7 +65,7 @@ export class WelcomeScreenComponent implements OnInit {
   }
 
   selectVisitReason(receiver) {
-    this.currentFormElement = FormElements.Thanks;
+    // this.currentFormElement = FormElements.Thanks;
     this.visitReason = receiver.target.innerText;
 
     this.dataService.getUser(this.monthBorn, this.dayBorn)
@@ -94,9 +95,11 @@ export class WelcomeScreenComponent implements OnInit {
         this.addVisit(this.currentUser);
       });
 
-    setTimeout( function(t) {
-      t.currentFormElement = FormElements.Welcome;
-    }, 2000, this);
+      this.router.navigate(['/thankyou']);
+
+    // setTimeout( function(t) {
+    //   t.currentFormElement = FormElements.Welcome;
+    // }, 2000, this);
   }
 
   addVisit(user: User) {
