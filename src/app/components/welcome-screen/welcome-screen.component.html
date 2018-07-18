@@ -1,64 +1,47 @@
-<div class="main-container">
-    <div class="header-row">
-        <div class="head-content">
-            <img src="assets/logoWhite.png" alt="logo" height="80px">
-        </div>
-        <div class="bottomright">
-            <img src="assets/horse-white-left.png" alt="whitehorse" height="80px" width="auto">
+
+
+<div *ngIf="currentFormElement === FormElements.Welcome">
+    <h1>Welcome!</h1>
+    <h2>Never visited before?</h2>
+    <p>Please go to reception, where we will be happy to welcome you.</p>
+
+    <div style="text-align: center;">
+        <button (click)="showMonths()" class="btn btn-main">
+            I've been here before, sign me in!
+        </button>
+    </div>
+</div>
+
+<div *ngIf="currentFormElement === FormElements.Months">
+    <h1>What month were you born in?</h1>
+    <div class="container">
+        <div *ngFor="let month of months">
+            <div class="months">
+            <button (click)="selectMonth($event)" class="btn btn-month">{{month}}</button>
+            </div>
         </div>
     </div>
-    
-    <div class="main-page">
-        <div class="content">
+</div>
 
-            <div *ngIf="currentFormElement === FormElements.Welcome">
-                <h1>Welcome!</h1>
-                <h2>Never visited before?</h2>
-                <p>Please go to reception, where we will be happy to welcome you.</p>
-
-                <div style="text-align: center;">
-                    <button (click)="showMonths()" class="btn btn-main">
-                        I've been here before, sign me in!
-                    </button>
-                </div>
-            </div>
-
-            <div *ngIf="currentFormElement === FormElements.Months">
-                <h1>What month were you born in?</h1>
-                <div class="container">
-                    <div *ngFor="let month of months">
-                      <div class="months">
-                        <button (click)="selectMonth($event)" class="btn btn-month">{{month}}</button>
-                      </div>
-                  </div>
-                </div>
-            </div>
-
-            <div *ngIf="currentFormElement === FormElements.Days">
-                <h1>What day were you born on?</h1>
-                <div class="container">
-                  <div *ngFor="let day of daysInMonth(monthInfo[monthBorn])">
-                    <button (click)="selectDay($event)" class="btn btn-day">{{day}}</button>
-                  </div>
-                </div>
-            </div>
-
-            <div *ngIf="currentFormElement === FormElements.VisitReason">
-                <h1>Why are you visiting today?</h1>
-                <div style="text-align: center;">
-                    <button *ngFor="let item of visitInfo" (click)="selectVisitReason($event)" class="btn btn-main">
-                        {{item}}
-                    </button>
-                </div>
-            </div>
-
-            <div *ngIf="currentFormElement === FormElements.Thanks">
-                <h1>Thank you for signing in!</h1>
-                <p></p>
-            </div>
-
+<div *ngIf="currentFormElement === FormElements.Days">
+    <h1>What day were you born on?</h1>
+    <div class="container">
+        <div *ngFor="let day of daysInMonth(monthInfo[monthBorn])">
+        <button (click)="selectDay($event)" class="btn btn-day">{{day}}</button>
         </div>
-    
     </div>
+</div>
 
+<div *ngIf="currentFormElement === FormElements.VisitReason">
+    <h1>Why are you visiting today?</h1>
+    <div style="text-align: center;">
+        <button *ngFor="let item of visitInfo" (click)="selectVisitReason($event)" class="btn btn-main">
+            {{item}}
+        </button>
+    </div>
+</div>
+
+<div *ngIf="currentFormElement === FormElements.Thanks">
+    <h1>Thank you for signing in!</h1>
+    <p></p>
 </div>
