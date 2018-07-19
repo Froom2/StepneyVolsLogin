@@ -13,13 +13,20 @@ import { DatabaseService } from './services/database.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
+import { MonthComponent } from './components/month/month.component';
+import { DayComponent } from './components/day/day.component';
+import { SignInService } from './services/sign-in.service';
+import { VisitReasonComponent } from './components/visit-reason/visit-reason.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeScreenComponent,
     AuthenticationComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    MonthComponent,
+    DayComponent,
+    VisitReasonComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,8 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
     AuthenticationService,
     AuthGuardService,
     DatabaseService,
-    AngularFireDatabase
+    AngularFireDatabase,
+    SignInService
   ],
   bootstrap: [AppComponent]
 })
