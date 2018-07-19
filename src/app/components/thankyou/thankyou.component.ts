@@ -4,7 +4,7 @@ import { Router } from '../../../../node_modules/@angular/router';
 @Component({
   selector: 'app-thankyou',
   templateUrl: './thankyou.component.html',
-  styleUrls: ['./thankyou.component.css']
+  styleUrls: ['../../app.component.css', './thankyou.component.css']
 })
 export class ThankyouComponent implements OnInit {
 

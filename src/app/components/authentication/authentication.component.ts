@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.css']
+  styleUrls: ['../../app.component.css', './authentication.component.css']
 })
 export class AuthenticationComponent {
   loginForm: FormGroup

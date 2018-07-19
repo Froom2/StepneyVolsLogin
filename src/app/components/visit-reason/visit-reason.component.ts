@@ -5,7 +5,7 @@ import { Router } from '../../../../node_modules/@angular/router';
 @Component({
   selector: 'app-visit-reason',
   templateUrl: './visit-reason.component.html',
-  styleUrls: ['./visit-reason.component.css']
+  styleUrls: ['../../app.component.css', './visit-reason.component.css']
 })
 export class VisitReasonComponent implements OnInit {
 

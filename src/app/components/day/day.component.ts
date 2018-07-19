@@ -5,7 +5,7 @@ import { Router } from '../../../../node_modules/@angular/router';
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
-  styleUrls: ['./day.component.css']
+  styleUrls: ['../../app.component.css', './day.component.css']
 })
 export class DayComponent implements OnInit {
 
