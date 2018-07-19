@@ -8,7 +8,7 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
 const appRoutes: Routes = [
   { path: '', component: AuthenticationComponent},
   { path: 'thankyou', component: ThankyouComponent, canActivate: [AuthGuardService]},
-  { path: 'login', component: WelcomeScreenComponent, canActivate: [AuthGuardService]}
+  { path: 'welcome', component: WelcomeScreenComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

@@ -96,10 +96,6 @@ export class WelcomeScreenComponent implements OnInit {
       });
 
       this.router.navigate(['/thankyou']);
-
-    // setTimeout( function(t) {
-    //   t.currentFormElement = FormElements.Welcome;
-    // }, 2000, this);
   }
 
   addVisit(user: User) {
