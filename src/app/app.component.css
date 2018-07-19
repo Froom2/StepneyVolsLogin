@@ -1,9 +1,4 @@
 
-
-.months {
-    padding: 5px;
-}
-
 .main-container {
     height: 100vh;
 }
@@ -86,16 +81,4 @@ button {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.btn-month {
-    padding-top: 0;
-    height: 80px;
-    width: 200px;
-}
-
-.btn-day {
-    margin: 5px;
-    height: 80px;
-    width: 80px;
 }
