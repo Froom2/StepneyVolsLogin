@@ -1,13 +1,13 @@
-<div class="container">
-  <h1>Admin Sign In</h1>
+
+<h1>Admin Sign In</h1>
+<div>
   <form (ngSubmit)="login()" [formGroup]="loginForm">
-	
     <input type="text" placeholder="Email" formControlName="email">
     <input type="password" placeholder="Password" formControlName="password">
-    <button type="submit">Log in!</button>
-  
+    <button type="submit" class = "btn">Log in</button>
   </form>
+</div>
 
-  <button type="button" (click)="logout()">Logout!</button>
-
+<div>
+  <button (click)="logout()" class = "btn">Logout</button>
 </div>

@@ -1,0 +1,6 @@
+<h1>What day were you born on?</h1>
+<div class="container">
+    <div *ngFor="let day of daysInMonthBorn()">
+    <button (click)="selectDay($event)" class="btn btn-day">{{day}}</button>
+    </div>
+</div>

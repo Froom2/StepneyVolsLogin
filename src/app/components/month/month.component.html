@@ -1,0 +1,9 @@
+<h1>What month were you born in?</h1>
+
+<div class="container">
+    <div *ngFor="let month of getMonths()">
+        <div class="months">
+        <button (click)="selectMonth($event)" class="btn btn-month">{{month}}</button>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.css']
+  styleUrls: ['../../app.component.css', './authentication.component.css']
 })
 export class AuthenticationComponent {
   loginForm: FormGroup
@@ -27,8 +27,7 @@ export class AuthenticationComponent {
   login() {
     this.authenticationService.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(data => {
-        console.log(`sign in data : ${data}`)
-        this.router.navigate(['/login']);
+        this.router.navigate(['/welcome']);
       })
       .catch(error => {
         console.error(error);
