@@ -10,11 +10,11 @@ import { Router } from '../../../../node_modules/@angular/router';
 export class VisitReasonComponent implements OnInit {
 
   reasons = Reasons;
-  
+
   constructor(private signInService: SignInService, private router: Router) { }
 
   ngOnInit() {
-    console.log(Object.values(this.reasons))
+    console.log(this.reasons.keys())
   }
 
   selectVisitReason(receiver) {

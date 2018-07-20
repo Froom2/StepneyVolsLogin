@@ -95,3 +95,11 @@ export enum Reasons {
   Riding = 'Riding',
   JustVisiting = 'Just visiting'
 }
+
+export namespace Reasons {
+
+  export function keys(): Array<string>{
+    const keys = Object.keys(Reasons);
+    return keys.slice(0,keys.length-1);
+  }
+}
