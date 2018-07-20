@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../../services/sign-in.service';
 import { Router } from '../../../../node_modules/@angular/router';
+import { Reasons } from '../../models/enums';
 
 @Component({
   selector: 'app-visit-reason',
@@ -9,14 +10,13 @@ import { Router } from '../../../../node_modules/@angular/router';
 })
 export class VisitReasonComponent implements OnInit {
 
+  Reasons = Reasons;
+
   constructor(private signInService: SignInService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  getVisitReasons() {
-    return this.signInService.visitReasons;
-  }
   selectVisitReason(receiver) {
     this.signInService.setReason(receiver.target.innerText);
     this.signInService.selectVisitReason();

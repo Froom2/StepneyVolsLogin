@@ -27,12 +27,6 @@ export class SignInService {
     'December': 31
   };
 
-  reasons = [
-    'Volunteering',
-    'Riding',
-    'Just visiting'
-  ]
-
   setMonth(month: string) {
     this.monthBorn = month;
   }
@@ -51,10 +45,6 @@ export class SignInService {
 
   setReason(reason: string) {
     this.visitReason = reason;
-  }
-
-  get visitReasons(): string[] {
-    return this.reasons;
   }
 
   get reason(): string {
