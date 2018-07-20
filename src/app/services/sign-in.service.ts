@@ -53,10 +53,6 @@ export class SignInService {
     this.visitReason = reason;
   }
 
-  get visitReasons(): string[] {
-    return this.reasons;
-  }
-
   get reason(): string {
     return this.visitReason;
   }
@@ -92,4 +88,10 @@ export class SignInService {
       });
   }
 
+}
+
+export enum Reasons {
+  Volunteering = 'Volunteering',
+  Riding = 'Riding',
+  JustVisiting = 'Just visiting'
 }

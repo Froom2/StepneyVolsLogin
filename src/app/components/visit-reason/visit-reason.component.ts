@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../../services/sign-in.service';
+import { SignInService, Reasons } from '../../services/sign-in.service';
 import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
@@ -9,14 +9,14 @@ import { Router } from '../../../../node_modules/@angular/router';
 })
 export class VisitReasonComponent implements OnInit {
 
+  reasons = Reasons;
+  
   constructor(private signInService: SignInService, private router: Router) { }
 
   ngOnInit() {
+    console.log(Object.values(this.reasons))
   }
 
-  getVisitReasons() {
-    return this.signInService.visitReasons;
-  }
   selectVisitReason(receiver) {
     this.signInService.setReason(receiver.target.innerText);
     this.signInService.selectVisitReason();

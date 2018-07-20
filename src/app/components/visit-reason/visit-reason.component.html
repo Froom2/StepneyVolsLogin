@@ -1,7 +1,7 @@
 <h1>Why are you visiting today?</h1>
 
 <div style="text-align: center;">
-    <button *ngFor="let item of getVisitReasons()" (click)="selectVisitReason($event)" class="btn btn-main">
+    <button *ngFor="let item of Object.values(this.reasons)" (click)="selectVisitReason($event)" class="btn btn-main">
         {{item}}
     </button>
 </div>
