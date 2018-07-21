@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../../services/sign-in.service';
-import { Router } from '../../../../node_modules/@angular/router';
-import { Reasons } from '../../models/enums';
+import { SignInService } from '../../../services/sign-in.service';
+import { Router } from '@angular/router';
+import { Reasons } from '../../../models/enums';
 
 @Component({
   selector: 'app-visit-reason',
