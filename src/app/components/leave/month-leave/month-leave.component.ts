@@ -17,7 +17,7 @@ export class MonthLeaveComponent implements OnInit {
 
   selectMonth(receiver) {
     this.signInService.setMonth(receiver.target.innerText)
-    this.router.navigate(['/day']);
+    this.router.navigate(['/day-leave']);
   }
 
   ngOnInit() {

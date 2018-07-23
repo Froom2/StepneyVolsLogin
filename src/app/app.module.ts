@@ -18,6 +18,7 @@ import { MonthComponent } from './components/arrive/month/month.component';
 import { DayComponent } from './components/arrive/day/day.component';
 import { VisitReasonComponent } from './components/arrive/visit-reason/visit-reason.component';
 import { MonthLeaveComponent } from './components/leave/month-leave/month-leave.component';
+import { DayLeaveComponent } from './components/leave/day-leave/day-leave.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MonthLeaveComponent } from './components/leave/month-leave/month-leave.
     MonthComponent,
     DayComponent,
     VisitReasonComponent,
-    MonthLeaveComponent
+    MonthLeaveComponent,
+    DayLeaveComponent
   ],
   imports: [
     BrowserModule,
