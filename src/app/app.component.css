@@ -70,12 +70,6 @@ button {
     background-color: #216c14;
 }
 
-.btn-main {
-    height: 80px;
-    width: 50vw;
-    margin: 5px;
-}
-
 .container {
     display: flex;
     flex-direction: row;

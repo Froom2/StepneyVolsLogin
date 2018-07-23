@@ -1,0 +1,13 @@
+<h1>Why are you visiting today?</h1>
+
+<div style="text-align: center;">
+    <button (click)="selectVisitReason($event)" class="btn btn-reason">
+        {{Reasons.Volunteering}}
+    </button>
+    <button (click)="selectVisitReason($event)" class="btn btn-reason">
+        {{Reasons.Riding}}
+    </button>
+    <button (click)="selectVisitReason($event)" class="btn btn-reason">
+        {{Reasons.JustVisiting}}
+    </button>
+</div>

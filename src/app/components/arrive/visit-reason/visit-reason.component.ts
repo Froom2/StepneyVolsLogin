@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../../services/sign-in.service';
-import { Router } from '../../../../node_modules/@angular/router';
-import { Reasons } from '../../models/enums';
+import { SignInService } from '../../../services/sign-in.service';
+import { Router } from '@angular/router';
+import { Reasons } from '../../../models/enums';
 
 @Component({
   selector: 'app-visit-reason',
   templateUrl: './visit-reason.component.html',
-  styleUrls: ['../../app.component.css', './visit-reason.component.css']
+  styleUrls: ['../../../app.component.css', './visit-reason.component.css']
 })
 export class VisitReasonComponent implements OnInit {
 
@@ -19,7 +19,7 @@ export class VisitReasonComponent implements OnInit {
 
   selectVisitReason(receiver) {
     this.signInService.setReason(receiver.target.innerText);
-    this.signInService.selectVisitReason();
+    this.signInService.submitVisit('arrival');
     this.router.navigate(['/thankyou']);
   }
 
