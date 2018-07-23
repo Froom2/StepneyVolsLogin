@@ -51,7 +51,7 @@ export class SignInService {
     return this.visitReason;
   }
 
-  selectVisitReason() {
+  submitVisit(eventType: string) {
     const userList = [];
 
     this.databaseService.getUser(this.monthBorn, this.dayBorn)
@@ -65,7 +65,7 @@ export class SignInService {
 
         const newVisit = {
           dateTime: new Date(),
-          eventType: 'arrival',
+          eventType: eventType,
           purpose: this.reason
         };
 

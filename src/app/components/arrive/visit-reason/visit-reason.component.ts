@@ -19,7 +19,7 @@ export class VisitReasonComponent implements OnInit {
 
   selectVisitReason(receiver) {
     this.signInService.setReason(receiver.target.innerText);
-    this.signInService.selectVisitReason();
+    this.signInService.submitVisit('arrival');
     this.router.navigate(['/thankyou']);
   }
 
