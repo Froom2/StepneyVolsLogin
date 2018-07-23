@@ -17,6 +17,7 @@ import { SignInService } from './services/sign-in.service';
 import { MonthComponent } from './components/arrive/month/month.component';
 import { DayComponent } from './components/arrive/day/day.component';
 import { VisitReasonComponent } from './components/arrive/visit-reason/visit-reason.component';
+import { MonthLeaveComponent } from './components/leave/month-leave/month-leave.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { VisitReasonComponent } from './components/arrive/visit-reason/visit-rea
     ThankyouComponent,
     MonthComponent,
     DayComponent,
-    VisitReasonComponent
+    VisitReasonComponent,
+    MonthLeaveComponent
   ],
   imports: [
     BrowserModule,

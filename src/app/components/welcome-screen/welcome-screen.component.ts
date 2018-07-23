@@ -17,7 +17,10 @@ export class WelcomeScreenComponent implements OnInit {
     }
 
     showMonths() {
-    this.router.navigate(['month']);
-  }
-  
+      this.router.navigate(['month']);
+    }
+
+    showMonthsLeaving() {
+      this.router.navigate(['month-leave']);
+    }
 }
