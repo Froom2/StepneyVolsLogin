@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../../services/sign-in.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { SignInService } from '../../../services/sign-in.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
-  styleUrls: ['../../app.component.css', './day.component.css']
+  styleUrls: ['../../../app.component.css', './day.component.css']
 })
 export class DayComponent implements OnInit {
 

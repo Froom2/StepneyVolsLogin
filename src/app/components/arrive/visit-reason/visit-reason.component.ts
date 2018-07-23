@@ -6,7 +6,7 @@ import { Reasons } from '../../../models/enums';
 @Component({
   selector: 'app-visit-reason',
   templateUrl: './visit-reason.component.html',
-  styleUrls: ['../../app.component.css', './visit-reason.component.css']
+  styleUrls: ['../../../app.component.css', './visit-reason.component.css']
 })
 export class VisitReasonComponent implements OnInit {
 
