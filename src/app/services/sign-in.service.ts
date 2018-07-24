@@ -8,6 +8,7 @@ export class SignInService {
   monthBorn: string;
   dayBorn: string;
   visitReason: string;
+  signedIn: boolean;
   currentUser: User;
 
   constructor(private databaseService: DatabaseService) { }
@@ -51,6 +52,14 @@ export class SignInService {
     return this.visitReason;
   }
 
+  setSignInStatus(signedIn: boolean) {
+    this.signedIn = signedIn;
+  }
+
+  get isSignedIn(): boolean {
+    return this.signedIn;
+  }
+
   submitVisit(eventType: string) {
     const userList = [];
 
@@ -75,6 +84,9 @@ export class SignInService {
         } else {
           this.currentUser.visits.push(newVisit)
         }
+
+        this.currentUser.signedInStatus = this.isSignedIn;
+        console.log("sign in status " + this.currentUser.signedInStatus)
 
         this.databaseService.updateUser(this.currentUser)
           .then(_ => console.log('update success'))

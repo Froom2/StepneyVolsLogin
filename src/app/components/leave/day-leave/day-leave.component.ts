@@ -18,6 +18,7 @@ export class DayLeaveComponent implements OnInit {
   selectDay(receiver) {
     this.signInService.setDayBorn(receiver.target.innerText);
     this.signInService.setReason(Reasons.Leaving);
+    this.signInService.setSignInStatus(false);
     this.signInService.submitVisit(VisitTypes.Departure);
     this.router.navigate(['/thankyou']);
   }

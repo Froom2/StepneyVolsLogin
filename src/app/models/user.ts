@@ -6,6 +6,7 @@ export class User {
       volunteerType: string;
       visits: Visit[];
       dayAndMonthOfBirth: string;
+      signedInStatus: boolean;
 }
 
 export class Visit {
