@@ -5,3 +5,8 @@ export enum Reasons {
     JustVisiting = 'Just visiting',
     Leaving = 'Leaving'
 }
+
+export enum VisitTypes {
+    Arrival = 'Arrival',
+    Departure = 'Departure'
+}
