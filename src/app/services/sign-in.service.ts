@@ -79,14 +79,18 @@ export class SignInService {
         };
 
         this.currentUser = userList[0];
+
         if (this.currentUser.visits == null) {
           this.currentUser.visits = [newVisit]
         } else {
           this.currentUser.visits.push(newVisit)
         }
 
-        this.currentUser.signedInStatus = this.isSignedIn;
-        console.log("sign in status " + this.currentUser.signedInStatus)
+        if(this.currentUser.signedInStatus == this.isSignedIn) {
+          console.error("Already signed in/out");
+        } else {
+          this.currentUser.signedInStatus = this.isSignedIn;
+        }
 
         this.databaseService.updateUser(this.currentUser)
           .then(_ => console.log('update success'))
